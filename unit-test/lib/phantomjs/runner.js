@@ -79,6 +79,7 @@
 		}
 	});
 
+  /*
 	function addLogging() {
 		window.document.addEventListener('DOMContentLoaded', function() {
 			var currentTestAssertions = [];
@@ -135,5 +136,59 @@
 				}
 			});
 		}, false);
-	}
+	} */
+
+  function addLogging() {
+    window.document.addEventListener( "DOMContentLoaded", function() {
+      var testCount = 0;
+      var testModuleCount = 1;
+      var current_test_assertions = [];
+                                            
+      QUnit.testDone(function(result) {
+        testCount = 0;
+        var moduleName = 'None';
+        var testName = 'None';
+        var i;
+        if(result.module) moduleName = result.module;
+        if(result.name != '') testName = result.name;
+
+        console.log('\n' + testModuleCount + '. Test Module: "' + moduleName + '", Test Name: "' + testName + '"');
+                                                                                                                                    
+        for (i = 0; i < current_test_assertions.length; i++) {
+          console.log(current_test_assertions[i]);
+        }
+                                          
+        current_test_assertions = [];
+        testModuleCount ++;
+      });
+                                                      
+      QUnit.log(function(details) {
+        testCount ++;
+        var response;
+                                                                              
+        response = '"' + details.message + '"' || '';
+                                                                                   
+        if (details.result) {
+          current_test_assertions.push('    ' + testCount + ') Passed: ' + response);
+          return;
+        }
+                                                                                          
+        if (typeof details.expected !== 'undefined') {
+          if (response) {
+            response += ', ';
+          }
+                                
+          response += 'expected: ' + details.expected + ', but was: ' + details.actual;
+        }
+        response += '\x1b[36m \n    ';
+        response += details.source.replace(/\n/g, '\n    ');
+        current_test_assertions.push('\x1b[31m\n    ' + testCount + ') Failed assertion: ' + response + "\x1b[39m");
+      });
+                                                          
+      QUnit.done(function(result){
+        console.log('\nTook ' + result.runtime +  'ms to run ' + result.total + ' tests. ' + result.passed + ' passed, ' + result.failed + ' failed.');
+        window.qunitDone = result;
+      });
+    }, false );
+  }
 })();
