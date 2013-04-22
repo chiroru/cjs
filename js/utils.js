@@ -4,7 +4,6 @@ var cjs = cjs || {};
 cjs.namespace = (function (ns) {
   var labels = ns.split('.');
   var root = cjs;
-  var i;
 
   // 冗長なグローバルを取り除く
   if (labels[0] === cjs) {
