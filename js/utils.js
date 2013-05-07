@@ -1,12 +1,18 @@
 
 var cjs = cjs || {};
 
+cjs.version = '1.0.0.0';
+cjs.toString = function() { return 'cjs'; };
+
 cjs.namespace = (function (ns) {
+
+  if (!ns) throw new Error('An invalid argument \"' + ns + '\" was specified');
+
   var labels = ns.split('.');
   var root = cjs;
 
   // 冗長なグローバルを取り除く
-  if (labels[0] === cjs) {
+  if (labels[0] === 'cjs') {
     labels = labels.slice(1);
   };
 
