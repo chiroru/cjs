@@ -136,7 +136,8 @@
 				}
 			});
 		}, false);
-	} */
+	}
+  */
 
   function addLogging() {
     window.document.addEventListener( "DOMContentLoaded", function() {
@@ -187,7 +188,12 @@
                                                           
       QUnit.done(function(result){
         console.log('\nTook ' + result.runtime +  'ms to run ' + result.total + ' tests. ' + result.passed + ' passed, ' + result.failed + ' failed.');
-        window.qunitDone = result;
+        if (typeof window.callPhantom === 'function') {
+          window.callPhantom({
+            'name': 'QUnit.done',
+            'data': result
+          });
+        }
       });
     }, false );
   }
