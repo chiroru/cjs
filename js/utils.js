@@ -26,3 +26,24 @@ cjs.namespace = (function (ns) {
 
   return root;
 });
+
+cjs.browser = {
+  IE: (function() {
+    return typeof window.addEventlistener == "undified";
+  })(),
+
+  Opera: (function() {
+    return window.opera;
+  })(),
+        
+  WebKit: (function() {
+    return (!document.uniqueId &&
+      !window.pera &&
+      !window.sidebar &&
+      window.localStorage &&
+      typeof window.orientation == "undefined");
+  })(),
+  Gecko: (function() {
+    return window.sidebar;
+  })()
+};
