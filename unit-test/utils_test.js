@@ -32,6 +32,15 @@ test('空のネームスペースを定義する', function() {
   );
 });
 
+test("半角英数以外から始まる名前空間を指定", function() {
+  expect(1);
+  throws(function() {
+    cjs.namespace("0namesp");
+  },
+  Error,
+  "半角英数以外から始まる名前空間を指定すると例外がスローされる.");
+});
+
 test('2階層のネームスペースが指定できる', function() {
   expect(1); 
   deepEqual(cjs.namespace('test'), cjs.test, '2階層のネームスペース\"cjs.test\"が定義できる');
@@ -42,3 +51,9 @@ test('3階層のネームスペースが指定できる', function() {
   ok(cjs.namespace('test1.test2') === cjs.test1.test2, '3階層のネームスペース\"cjs.test1.test2\"が定義できる');
 });
 
+module("browser");
+
+test("WebKitと判定される", function() {
+  var type = cjs.browser.WebKit;
+  ok(cjs.browser.WebKit, "WebKitと判定される");
+});

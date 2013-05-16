@@ -21,6 +21,14 @@ test("プライベートインスタンスフィールドにアクセスでき�
   equal(undefined, obj.isbn);
 });
 
+test("プライベートインスタンスメソッドにアクセスできない", function() {
+  var obj = new Book("1234", "title1", "author1");
+  throws(function() {
+    obj.debug();
+  },
+  Error);
+});
+
 test("クラスメソッド", function() {
   var obj = new Book("1234", "title1", "author1");
   equal("Book [ ISBN:1234 ]", obj.toString());

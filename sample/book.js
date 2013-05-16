@@ -13,6 +13,10 @@ var Book = (function() {
     var title;
     var author;
 
+    function debug() {
+      return "debug";
+    };
+
     // 特権メソッド
     this.getIsbn = function() {
       return isbn;

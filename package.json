@@ -1,0 +1,22 @@
+{
+  "name": "cjs",
+  "version": "0.0.1",
+  "description": "javascript core library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chiroru/cjs.git"
+  },
+  "author": "chiroru",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "ef567c613c515cbddeb377f3e52cefdefe58ebd3",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-watch": "~0.4.3"
+  }
+}
