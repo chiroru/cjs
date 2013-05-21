@@ -16,7 +16,12 @@
   "gitHead": "ef567c613c515cbddeb377f3e52cefdefe58ebd3",
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-contrib-connect": "",
+    "grunt-contrib-livereload": "",
     "grunt-contrib-cssmin": "~0.6.0",
-    "grunt-contrib-watch": "~0.4.3"
+    "grunt-regarde": "",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-jshint": "",
+    "grunt-contrib-yuidoc": ""
   }
 }
